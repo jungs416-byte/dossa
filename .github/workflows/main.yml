@@ -1,0 +1,36 @@
+name: Dossa Alert Bot
+
+on:
+  schedule:
+    - cron: '*/10 * * * *'  # 10분마다 자동으로 실행
+  workflow_dispatch:        # 내가 원할 때 수동으로도 실행 가능하게 함
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install dependencies
+        run: |
+          pip install requests beautifulsoup4
+
+      - name: Run Dossa Script
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python dossa_alert.py
+
+      - name: Commit and Push changes
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "action@github.com"
+          git add last_id.txt
+          git commit -m "Update last_id" || exit 0
+          git push
