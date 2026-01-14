@@ -62,7 +62,7 @@ def check_dossa():
             link = "https://corearoadbike.com/board" + raw_link.lstrip(".")
 
             # ⭐ 키워드 필터링 (레드 AND 165)
-            if "레드" in title and "165" in title:
+            if "165" in title:
                 found_items.append(f"🚲 도싸 신규 매물!\n\n제목: {title}\n링크: {link}")
 
         # 4. 새 매물이 있으면 텔레그램 발송 및 파일 업데이트
