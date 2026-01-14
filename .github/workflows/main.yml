@@ -2,7 +2,7 @@ name: Dossa Alert Bot
 
 on:
   schedule:
-    - cron: '*/10 * * * *'  # 10분마다 자동으로 실행
+    - cron: '*/5 * * * *'  # 5분마다 자동으로 실행
   workflow_dispatch:        # 내가 원할 때 수동으로도 실행 가능하게 함
 
 jobs:
