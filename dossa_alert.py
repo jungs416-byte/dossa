@@ -19,7 +19,8 @@ def send_telegram(message):
 def check_dossa():
     try:
         # 1. 도싸 페이지 접속 (한글 깨짐 방지를 위해 euc-kr 설정)
-        response = requests.get(URL)
+        headers = {'User-Agent': 'Mozilla/5.0'}
+response = requests.get(URL, headers=headers)
         response.encoding = 'euc-kr'
         soup = BeautifulSoup(response.text, 'html.parser')
 
