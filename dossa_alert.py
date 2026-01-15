@@ -5,7 +5,7 @@ import os
 # 텔레그램 설정 (깃허브 Secrets에서 불러옴)
 TOKEN = os.environ.get('TELEGRAM_TOKEN')
 CHAT_ID = os.environ.get('TELEGRAM_CHAT_ID')
-URL = "https://corearoadbike.com/board/board.php?t_id=Menu31Top6"
+URL = "http://corearoadbike.com/board/board.php?t_id=Menu31Top6"
 DB_FILE = "last_id.txt"
 
 def send_telegram(message):
